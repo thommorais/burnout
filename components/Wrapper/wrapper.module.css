@@ -1,5 +1,7 @@
 .wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+	--padding: clamp(24px, 5vh, 48px);
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: calc(100vh - calc(var(--padding) * 2));
+	padding: var(--padding);
 }

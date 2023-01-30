@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import Title from '_components/Title'
+import Questions from '_components/Questions'
 
-const Home: NextPage = () => {
+const QuestionsPage: NextPage = () => {
 	return (
 		<>
 			<Head>
@@ -11,9 +11,9 @@ const Home: NextPage = () => {
 				<meta name='description' content='' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<Title />
+			<Questions />
 		</>
 	)
 }
 
-export default Home
+export default QuestionsPage

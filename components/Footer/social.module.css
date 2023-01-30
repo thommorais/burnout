@@ -1,0 +1,122 @@
+.followUs {
+	display: flex;
+	gap: 10rem;
+	align-items: center;
+	cursor: pointer;
+	composes: uiCopy from '_styles/components.module.css';
+}
+
+.socialMediaList {
+	position: relative;
+	--iconSize: 3.5rem;
+	display: grid;
+	grid-template-columns: repeat(3, var(--iconSize));
+	gap: 2rem;
+	padding: 0;
+	margin: 0;
+}
+
+.socialMediaList a {
+	position: relative;
+	display: grid;
+	place-items: center;
+	color: white;
+	height: var(--iconSize);
+	width: var(--iconSize);
+	border: 1px solid var(--c-hiContrast);
+	border-radius: 10rem;
+	overflow: hidden;
+}
+
+.socialMediaList a:hover {
+	color: black;
+}
+
+.socialMediaList a:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: inherit;
+	width: inherit;
+	border-radius: inherit;
+	transform-origin: center;
+	transform: scale3d(0, 0, 0);
+	transition: transform 0.2s var(--exit);
+	background: var(--c-hiContrast);
+}
+
+@keyframes fromLeft {
+	from {
+		transform: translate3d(125%, 0, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.socialMediaList li:hover a:before {
+	transition: transform 0.33s var(--enter);
+	transform: scale3d(1.3, 1.3, 1.3);
+}
+
+.socialMediaList li:hover svg {
+	animation: fromLeft 0.2s var(--move) forwards;
+}
+
+.socialMediaList a svg {
+	position: relative;
+	z-index: 2;
+	height: 1.5rem;
+}
+
+.socialMediaList:before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	height: 0.05rem;
+	width: 6rem;
+	transform-origin: 0 0;
+	background: var(--c-hiContrast);
+	--sx: 0;
+	--op: 0;
+	--dl: 0.2s;
+	transform: translate3d(calc(calc(100% + 1.5rem) * -1), -50%, 0)
+		scale3d(var(--sx), 1, 1);
+	opacity: var(--op);
+	transition: transform 0.2s var(--dl) var(--move),
+		opacity 0.2s var(--dl) var(--move);
+}
+
+.socialMediaIcon {
+	--tx: calc(var(--iconSize) * -1.55);
+	--op: 0;
+	--dl: 0.15s;
+	opacity: var(--op);
+	transform: translate3d(var(--tx), 0, 0);
+	transition: transform 0.2s var(--dl) var(--move),
+		opacity 0.2s var(--dl) var(--move);
+}
+
+.socialMediaIcon:nth-child(2) {
+	--dl: 0.1s;
+	--tx: calc(var(--iconSize) * -3.1);
+}
+
+.socialMediaIcon:nth-child(3) {
+	--dl: 0.05s;
+	--tx: calc(var(--iconSize) * -4.7);
+}
+
+/* hover */
+.followUs:hover .socialMediaList:before {
+	--sx: 1;
+	--op: 1;
+	--dl: 0.2s;
+}
+
+.followUs:hover .socialMediaList .socialMediaIcon {
+	--tx: 0;
+	--op: 1;
+}

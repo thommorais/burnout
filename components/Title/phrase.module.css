@@ -1,0 +1,35 @@
+.questions {
+	display: grid;
+	place-items: center;
+	height: 100%;
+}
+
+.questions a {
+	text-decoration: none;
+	color: var(--c-hiContrast);
+}
+
+.title {
+	position: relative;
+	margin: 0;
+	font-family: var(--ff-a);
+	font-size: clamp(2rem, 8vw, 9rem);
+	font-weight: normal;
+	letter-spacing: clamp(1.2em, 5vw, 6rem);
+	text-align: center;
+}
+
+.title:hover:before {
+	opacity: 0.2;
+	transform: translate3d(1%, 12%, 0);
+}
+
+.title:before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	content: attr(data-text);
+	opacity: 0;
+	transform: translate3d(0, 0, 0);
+	transition: transform 0.2s var(--enter), opacity 0.3s var(--enter);
+}

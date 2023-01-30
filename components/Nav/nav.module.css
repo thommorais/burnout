@@ -1,54 +1,69 @@
 .nav {
-  display: grid;
-  place-items: center;
-  padding: 1.6rem 0.8rem;
+	display: grid;
+	place-items: center;
+	padding: 0 0.8rem;
 }
 
 .nav > ul {
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  gap: 2.4rem;
+	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	gap: clamp(2rem, 6vw, 4rem);
 }
 
 .nav li {
-  position: relative;
+	position: relative;
+	user-select: none;
+}
+
+.link {
+	composes: uiCopy from '_styles/components.module.css';
 }
 
 .nav li > a {
-  --px: 0.6rem;
-  position: relative;
-  padding: 0 var(--px);
-  font-size: 1.8rem;
-  font-weight: 100;
-  letter-spacing: 0.15rem;
-  text-transform: uppercase;
+	--px: 0.6rem;
+	position: relative;
+	padding: 0 var(--px);
+	cursor: pointer;
+	user-select: none;
 }
 
 .hoverEffect {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 100%;
-  pointer-events: none;
-  background: rgba(254, 254, 254, 1);
-  overflow: hidden;
-  transition: width 0.2s linear;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 100%;
+	transition: width 0.2s 0.2s var(--exit);
+	pointer-events: none;
+	overflow: hidden;
 }
 
 .hoverEffect:after {
-  position: absolute;
-  top: 0;
-  left: calc(var(--px));
-  z-index: 1;
-  content: attr(data-text) " ";
-  color: var(--c-base);
-  white-space: nowrap;
-  overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: calc(var(--px));
+	z-index: 1;
+	content: attr(data-text) ' ';
+	color: var(--c-base);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.hoverEffect:before {
+	position: absolute;
+	top: 0;
+	left: -0.5rem;
+	content: '';
+	height: 100%;
+	width: 100%;
+	pointer-events: none;
+	background: rgba(254, 254, 254, 1);
+	overflow: hidden;
 }
 
 /* not happy with this, have to find a way to handle this with transforms or something that avoid repaints*/
 .nav a:hover .hoverEffect {
-  width: 100%;
+	width: 100%;
+	transition: width 0.2s var(--enter);
 }

@@ -1,51 +1,59 @@
 *::where(:not(html):not(svg *, symbol *)) {
-  all: unset;
-  display: revert;
+	all: unset;
+	display: revert;
 }
 
 *:, *::before, *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 a,
 button {
-  cursor: revert;
+	cursor: revert;
 }
 
 ol,
 ul,
 menu {
-  list-style: none;
+	list-style: none;
 }
 
 :root {
-  --h: 203;
-  --s: 24%;
-  --l: 32%;
-  --c-base: hsl(var(--h), var(--s), var(--l));
-  --c-t-base: hsl(100%, 100%, 0%);
+	--h: 203;
+	--s: 24%;
+	--l: 32%;
+	--c-base: hsl(var(--h), var(--s), var(--l));
+	--c-t-base: hsl(100%, 100%, 0%);
+	--c-hiContrast: hsl(100, 100%, 100%);
+
+	--enter: cubic-bezier(0, 0.5, 0.5, 1);
+	--move: cubic-bezier(0, 0.5, 0.5, 1);
+	--exit: cubic-bezier(0.5, 0, 0, 1);
+
+	--ff-a: ailerons, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --c-t-base: hsl(100%, 100%, 100%);
-  }
+	:root {
+		color-scheme: dark;
+		--c-t-base: hsl(100%, 100%, 100%);
+	}
 }
 
 html {
-  /* using 10 because its make easier to use REM as 1rem === 10px */
-  font-size: 10px;
+	/* using 10 because its make easier to use REM as 1rem === 10px */
+	font-size: 10px;
 }
 
 html,
 body {
-  height: 100%;
-  min-height: 100vh;
+	height: 100%;
+	min-height: 100vh;
 }
 
 body {
-  background: var(--c-base);
-  color: var(--c-t-base);
-  font-family: "Poppins", sans-serif;
+	background: var(--c-base);
+	color: var(--c-t-base);
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.6rem;
 }

@@ -1,19 +1,20 @@
-import Nav from "_components/Nav"
+import Nav from '_components/Nav'
+import Footer from '_components/Footer'
 
-import S from "./wrapper.module.css"
+import S from './wrapper.module.css'
 
 interface WrapperInterface {
-  children: JSX.Element
+	children: JSX.Element
 }
 
 function Wrapper({ children }: WrapperInterface) {
-  return (
-    <div className={S.wrapper}>
-      <Nav />
-      <main>{children}</main>
-      <footer>social media - volume</footer>
-    </div>
-  )
+	return (
+		<div className={S.wrapper}>
+			<Nav />
+			<main>{children}</main>
+			<Footer />
+		</div>
+	)
 }
 
 export default Wrapper

@@ -1,0 +1,94 @@
+.scrollToBegin {
+	position: relative;
+	margin: 0 auto;
+	composes: uiCopy from '_styles/components.module.css';
+	opacity: 0.75;
+}
+
+.dot {
+	position: absolute;
+	left: 50%;
+	top: 1rem;
+	transform: translate3d(-50%, -50%, 0);
+	background: rgba(254, 254, 254, 1);
+	height: 0.5rem;
+	width: 0.5rem;
+	border-radius: 1rem;
+}
+
+.mouse {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	--h: 6.5rem;
+	--w: 4rem;
+	height: var(--h);
+	width: var(--w);
+	transform: translate3d(-50%, calc(-100% - 1rem), 0);
+	cursor: pointer;
+}
+
+.mouseShape {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	content: '';
+	transform: translate3d(-50%, 0, 0);
+	display: block;
+	height: calc(var(--h) - 1rem);
+	width: calc(var(--w) - 1rem);
+	border: 1px solid rgba(254, 254, 254, 0.45);
+	border-radius: 2rem;
+}
+
+.mouse:hover .dot {
+	animation: movingDot 1s var(--move) infinite;
+}
+
+.mouseShape:after {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	content: '';
+	transform: translate3d(-50%, 0, 0);
+	display: block;
+	height: calc(var(--h) - 1rem);
+	width: calc(var(--w) - 1rem);
+	border: 1px solid rgba(254, 254, 254, 1);
+	border-radius: 2rem;
+	transition: clip-path 0.2s var(--move);
+
+	/** clock orientation */
+	/** custom properties won't work o.O **/
+	clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 100% 0%);
+}
+
+.mouse:hover .mouseShape:after {
+	animation: bright 1s var(--move) infinite;
+}
+
+@keyframes bright {
+	0% {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+	}
+	25%,
+	50% {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	}
+	75%,
+	100% {
+		clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+	}
+}
+
+@keyframes movingDot {
+	0% {
+		transform: translate3d(-50%, -50%, 0);
+	}
+	90% {
+		transform: translate3d(-50%, 2rem, 0);
+	}
+	100% {
+		opacity: 0;
+	}
+}

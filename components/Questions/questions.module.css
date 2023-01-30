@@ -1,0 +1,99 @@
+.questions {
+	display: grid;
+	place-items: center;
+	height: 100%;
+}
+
+.question {
+	padding: 0 2rem;
+	width: clamp(240px, 50vw, 940px);
+	text-align: center;
+}
+
+.headset {
+	font-size: 5rem;
+}
+
+.sliderContainer {
+	margin: 7.5rem auto;
+}
+
+.buttonWrp {
+	margin: 5rem auto;
+	display: flex;
+	justify-content: center;
+	gap: clamp(1rem, 5vw, 4rem);
+}
+
+.button {
+	position: relative;
+	border: 2px solid var(--c-hiContrast);
+	padding: 2rem clamp(1rem, 5vw, 10rem);
+	background: transparent;
+	text-transform: uppercase;
+	font-size: 1.2rem;
+	letter-spacing: 0.5rem;
+	cursor: pointer;
+}
+
+.button span {
+	position: relative;
+	display: block;
+	transform: translate3d(0, 0, 0);
+	transition: transform 0.2s 0.2s var(--exit), opacity 0.1s 0.2s var(--exit);
+}
+
+.button:hover span {
+	opacity: 0;
+	transform: translate3d(-50%, 0, 0);
+	transition: transform 0.2s var(--enter), opacity 0.1s var(--enter);
+}
+
+.button:before,
+.button:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: inherit;
+	box-sizing: border-box;
+	opacity: 0;
+}
+
+.button:before {
+	z-index: 1;
+	content: attr(data-text);
+	color: var(--c-base);
+	transform: translate3d(10%, 0, 0);
+	transition: opacity 0.2s var(--exit), transform 0.2s var(--exit);
+}
+
+.button:after {
+	content: '';
+	background: var(--c-hiContrast);
+	transform: scale3d(0, 1, 1);
+	transition: transform 0.1s 0.2s var(--exit), opacity 0.1s 0.2s var(--exit);
+}
+
+.button:hover {
+	color: var(--c-base);
+}
+
+.button:hover:after {
+	opacity: 1;
+	transform: scale3d(1, 1, 1);
+	transition: transform 0.2s 0.1s var(--exit), opacity 0.3s 0.1s var(--exit);
+}
+
+.button:hover:before {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+	transition: opacity 0.2s 0.1s var(--enter), transform 0.2s 0.1s var(--enter);
+}
+
+.figure {
+	margin: 5rem auto;
+	display: flex;
+	justify-content: center;
+}
